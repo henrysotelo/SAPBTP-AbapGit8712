@@ -1,0 +1,25 @@
+@Metadata.layer: #CORE
+@Search.searchable: true
+@UI:{
+headerInfo: {
+    typeName: 'Booking Supplement',
+    typeNamePlural: 'Booking Supplements',
+    title: {
+        type: #STANDARD,
+        label: 'Booking Supplement',
+        iconUrl: '',
+        value: 'BookingSupplementId'
+    }
+} }
+annotate view ZC_BOOKSUPPL_8712
+    with 
+{
+@UI.facet:[{ id: 'BookingSupplement',
+                purpose: #STANDARD,
+                type:#IDENTIFICATION_REFERENCE,
+                label: 'Booking Supplement',
+                position: 10 }]
+@Search.defaultSearchElement: true
+   BooksupplUuid;
+    
+}
