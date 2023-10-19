@@ -9,7 +9,7 @@ define view entity ZC_BOOKSUPPL_8712
   key ParentUuid,
       BookingSupplementId,
       SupplementId,
-     /* _SupplementText.Description: localized,*/
+      _SupplementText.Description: localized,
       @Semantics.amount.currencyCode: 'CurrencyCode'
       Price,
       CurrencyCode,

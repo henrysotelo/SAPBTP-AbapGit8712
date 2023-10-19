@@ -28,8 +28,8 @@ define view entity ZI_BOOKSUPPL_8712 as
       price                 as Price,
       currency_code         as CurrencyCode,
       local_last_changed_at as LocalLastChangedAt,
-      _Booking,
       _Travel,
+      _Booking,
       _Supplement,
       _SupplementText 
 }
