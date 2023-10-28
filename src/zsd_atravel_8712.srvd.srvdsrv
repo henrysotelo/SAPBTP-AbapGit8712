@@ -1,8 +1,0 @@
-@EndUserText.label: 'Service definition Travel Approval'
-define service ZSD_ATRAVEL_8712 {
-  expose ZC_ATRAVEL_8712  as Travel;
-  expose ZC_ABOOKING_8713 as Booking;
-  expose /DMO/I_Customer  as Passeger;
-  expose /DMO/I_Agency    as Agency;
-  expose I_Currency       as Currency;
-}
