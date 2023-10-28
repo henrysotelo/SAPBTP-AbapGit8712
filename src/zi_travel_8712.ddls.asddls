@@ -19,7 +19,7 @@ define root view entity ZI_TRAVEL_8712
       total_price           as TotalPrice,
       currency_code         as CurrencyCode,
       description           as Description,
-      overall_status        as OverallStatus,
+      overall_status        as TravelStatus,
       @Semantics.user.createdBy: true
       local_created_by      as LocalCreatedBy,
       @Semantics.systemDateTime.createdAt: true
@@ -32,5 +32,5 @@ define root view entity ZI_TRAVEL_8712
       _Booking,
       _Agency,
       _Customer,
-      _Currency
+      _Currency 
 }

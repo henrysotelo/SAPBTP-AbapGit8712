@@ -2,33 +2,35 @@
 @Search.searchable: true
 @UI: {
 headerInfo: {
-typeName: 'Travel',
-typeNamePlural: 'Travels',
-title: {
-type: #STANDARD,
-value: 'TravelID' }
+    typeName: 'Travel',
+    typeNamePlural: 'Travels',
+    title: {
+        type: #STANDARD,
+        value: 'TravelID' 
+    }
 }
 }
 annotate view ZC_TRAVEL_8712 with
 {
-  @UI.facet: [{ id:            'Travel',
+  @UI.facet: [{    id:            'Travel',
                    purpose:       #STANDARD,
                    type:          #IDENTIFICATION_REFERENCE,
                    label:         'Travel',
                    position:      10 },
+                   
                  { id:            'Booking',
                    purpose:       #STANDARD,
                    type:          #LINEITEM_REFERENCE,
                    label:         'Booking',
                    position:      20,
-                   targetElement: '_Booking'}]
-  @UI.hidden: true
-  TravelUuid;
+                   targetElement: '_Booking'
+                  }]
+                  
+  //@UI.hidden: true
+  //TravelUuid;
 
   @UI: {
-  lineItem: [{
-  position: 10,
-  importance: #HIGH }],
+  lineItem: [{ position: 10, importance: #HIGH }],
   identification: [{ position: 10, label: 'Travel ID [1,...,99999999]' }]}
   @Search.defaultSearchElement: true
   TravelId;
@@ -51,14 +53,12 @@ annotate view ZC_TRAVEL_8712 with
   CustomerId;
 
   @UI: {
-  lineItem: [ { position: 40, importance:
-  #MEDIUM } ],
+  lineItem: [ { position: 40, importance: #MEDIUM } ],
   identification: [ { position: 40 } ] }
   BeginDate;
 
   @UI: {
-  lineItem: [ { position: 41, importance: #MEDIUM }
-  ],
+  lineItem: [ { position: 41, importance: #MEDIUM } ],
   identification: [ { position: 41 } ] }
   EndDate;
 
@@ -67,26 +67,23 @@ annotate view ZC_TRAVEL_8712 with
   BookingFee;
 
   @UI: {
-  lineItem: [ { position: 43, importance: #MEDIUM } ],
-  identification: [ { position: 43, label: 'Total Price' } ] }
+  lineItem: [ { position: 43, importance: #MEDIUM }],
+  identification: [ { position: 43, label: 'Total
+  Price' } ] }
   TotalPrice;
 
   @Consumption.valueHelpDefinition: [{entity: {name: 'I_Currency', element: 'Currency' }}]
   CurrencyCode;
-
-  @UI: {
-  identification:[ { position: 46 } ] }
+  
+  @UI: { identification:[ { position: 46 } ] }
   Description;
-
-  @UI: {
-  lineItem: [ { position: 50, importance: #HIGH },
-  { type: #FOR_ACTION, dataAction:
-  'createTravelByTemplate', label: 'Create Travel by
-Template' } ],
-  identification: [ { position: 45,
-  label: 'Status [O(Open)|A(Accepted)|X(Canceled)]' }
-  ] }
-  travelstatus;
+  
+  
+  @UI: { lineItem: [ { position: 50, importance: #HIGH },
+                     { type: #FOR_ACTION, dataAction: 'createTravelByTemplate', label: 'Create Travel by Template' } ], 
+                       identification: [ { position: 45,
+         label: 'Status [O(Open)|A(Accepted)|X(Canceled)]' } ] }
+  TravelStatus;
 
   @UI.hidden: true
   LastChangedAt;

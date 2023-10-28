@@ -40,4 +40,3 @@ define view entity ZI_BOOKING_8712
       _Carrier,
       _Connection
 } 
-

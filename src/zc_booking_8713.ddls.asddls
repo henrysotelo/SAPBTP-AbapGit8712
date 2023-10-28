@@ -23,5 +23,5 @@ define view entity ZC_BOOKING_8713 as projection on ZI_BOOKING_8712
       _BookingSupplement: redirected to composition child ZC_BOOKSUPPL_8712,
       _Customer,
       _Carrier,
-      _Connection
+      _Connection 
 }

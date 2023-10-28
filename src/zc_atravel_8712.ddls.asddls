@@ -16,7 +16,7 @@ define root view entity ZC_ATRAVEL_8712
       TotalPrice,
       CurrencyCode,
       Description,
-      OverallStatus,
+      TravelStatus,
       LastChangedAt,
       /* Associations */
       _Booking : redirected to composition child ZC_ABOOKING_8713,

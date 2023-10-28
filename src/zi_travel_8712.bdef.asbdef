@@ -10,17 +10,17 @@ authorization master ( instance )
 etag master LocalLastChangedAt
 {
   //Administrative field: read only
-  field ( readonly:update ) TravelUuid, LastChangedAt, LocalLastChangedBy,
-  LocalCreatedBy, LocalCreatedAt;
+  field ( numbering : managed, readonly ) TravelUuid;
+  field ( readonly ) TravelId, LastChangedAt, LocalLastChangedBy, LocalCreatedBy, LocalCreatedAt;
   //Mandatory Field, that are required to create travel
-  field ( mandatory : create ) TravelId, AgencyId, OverallStatus, BookingFee, CurrencyCode;
-  field ( features : instance ) TravelId, OverallStatus;
+  field ( mandatory : create )  AgencyId, TravelStatus, BookingFee, CurrencyCode;
+  field ( features : instance ) TravelStatus;
   create;
   update;
   delete;
   validation validateCustomer on save { field CustomerId; }
   validation validateDates on save { field BeginDate, EndDate; }
-  validation validateStatus on save { field OverallStatus; }
+  validation validateStatus on save { field TravelStatus; }
   action ( features : instance ) acceptTravel result [1] $self;
   action ( features : instance ) rejectTravel result [1] $self;
   action createTravelByTemplate result [1] $self;
@@ -37,7 +37,7 @@ etag master LocalLastChangedAt
       TotalPrice         = total_price;
       CurrencyCode       = currency_code;
       Description        = description;
-      OverallStatus      = overall_status;
+      TravelStatus       = overall_status;
       LocalCreatedBy     = local_created_by;
       LocalCreatedAt     = local_created_at;
       LocalLastChangedBy = local_last_changed_by;
