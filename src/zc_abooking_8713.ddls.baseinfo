@@ -3,6 +3,7 @@
 {
 "FROM":
 [
+"/DMO/I_CARRIER",
 "ZI_BOOKING_8712"
 ],
 "ASSOCIATED":

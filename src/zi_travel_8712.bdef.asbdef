@@ -11,19 +11,25 @@ etag master LocalLastChangedAt
 {
   //Administrative field: read only
   field ( numbering : managed, readonly ) TravelUuid;
-  field ( readonly ) TravelId, LastChangedAt, LocalLastChangedBy, LocalCreatedBy, LocalCreatedAt;
+  field ( readonly ) LastChangedAt, LocalLastChangedBy, LocalCreatedBy, LocalCreatedAt;
+
   //Mandatory Field, that are required to create travel
-  field ( mandatory : create )  AgencyId, TravelStatus, BookingFee, CurrencyCode;
-  field ( features : instance ) TravelStatus;
+  field ( mandatory ) AgencyId, TravelStatus, BookingFee, CurrencyCode;
+  field ( features : instance ) TravelId, TravelStatus;
   create;
   update;
   delete;
-  validation validateCustomer on save { field CustomerId; }
+
+  //Validaciones
+  validation validateCustomer on save { create; field CustomerId; }
   validation validateDates on save { field BeginDate, EndDate; }
   validation validateStatus on save { field TravelStatus; }
+
+  //Actions
   action ( features : instance ) acceptTravel result [1] $self;
   action ( features : instance ) rejectTravel result [1] $self;
   action createTravelByTemplate result [1] $self;
+
   association _Booking { create; }
   mapping for ztb_travel_8712a
     {
@@ -55,7 +61,7 @@ etag master LocalLastChangedAt
 //unmanaged saveed saveged save master <field_name>
 {
   //Administrative  field: read only
-  field ( readonly:update ) BookingUuid, CarrierId, ConnectionId, FlightDate,
+  field ( readonly : update ) BookingUuid, CarrierId, ConnectionId, FlightDate,
   BookingStatus, BookingId, ParentUuid;
   //field(mandatory)
   update;
@@ -92,7 +98,7 @@ authorization dependent by _Travel
 etag master LocalLastChangedAt
 {
   //Administrative field: read only
-  field ( readonly:update ) BooksupplUuid,  RootUuid, ParentUuid;
+  field ( readonly : update ) BooksupplUuid, RootUuid, ParentUuid;
   //field(mandatory)
   field ( mandatory ) SupplementId, Price;
   update;

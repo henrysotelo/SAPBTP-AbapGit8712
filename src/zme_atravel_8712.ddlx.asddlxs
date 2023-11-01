@@ -27,15 +27,46 @@ annotate view ZC_ATRAVEL_8712 with
                 position: 20,
                 targetElement: '_Booking'
               }]
-  @UI:{ lineItem: [{ position: 10,
-               exclude: true,
-               hidden: true,
-               inline: true,
-               determining: true,
-               importance: #HIGH }],
-               identification: [{ position: 10, label: 'Travel ID[1,...,999999]' }]
-               }
-  @Search.defaultSearchElement: true
-  TravelUuid;
 
+  @UI: { lineItem: [ { position: 10, importance: #HIGH } ],
+         identification: [ { position: 10 } ] }
+  @Search.defaultSearchElement: true
+  TravelId;
+  @UI: { lineItem: [ { position: 20, importance: #HIGH } ],
+         identification: [ { position: 20 } ],
+         selectionField: [ { position: 20 } ] }
+  @Consumption.valueHelpDefinition: [ { entity : {name: '/DMO/I_Agency', element: 'AgencyID' } } ]
+  @Search.defaultSearchElement: true
+  AgencyId;
+
+  @UI: { lineItem: [ { position: 30, importance: #HIGH } ],
+         identification: [ { position: 30 } ],
+         selectionField: [ { position: 30 } ] }
+  @Consumption.valueHelpDefinition: [ { entity : {name: '/DMO/I_Customer', element: 'CustomerID' } } ]
+  @Search.defaultSearchElement: true
+  CustomerId;
+  @UI: { identification:[ { position: 40 } ] }
+  BeginDate;
+  @UI: { identification:[ { position: 41 } ] }
+  EndDate;
+  @UI: { lineItem: [ { position: 42, importance: #MEDIUM } ],
+         identification: [ { position: 42 } ] }
+  BookingFee;
+
+  @UI: { lineItem: [ { position: 43, importance: #MEDIUM } ],
+         identification: [ { position: 43, label: 'Total Price' } ] }
+  TotalPrice;
+  @Consumption.valueHelpDefinition: [ {entity: {name: 'I_Currency', element: 'Currency' } } ]
+  CurrencyCode;
+  @UI: { lineItem: [ { position: 15, importance: #HIGH },
+       { type: #FOR_ACTION, dataAction: 'acceptTravel', label: 'Accept Travel' },
+       { type: #FOR_ACTION, dataAction: 'rejectTravel', label: 'Reject Travel' } ], identification: [ { position: 15 },
+       { type: #FOR_ACTION, dataAction: 'acceptTravel', label: 'Accept Travel' },
+       { type: #FOR_ACTION, dataAction: 'rejectTravel', label: 'Reject Travel' } ], selectionField: [ { position: 40 } ] }
+  @EndUserText.label: 'Overall Status'
+  TravelStatus;
+  @UI: { lineItem: [ { position: 45, importance: #MEDIUM } ], identification:[ { position: 45 } ] }
+  Description;
+  @UI.hidden: true
+  LastChangedAt;
 }
