@@ -6,7 +6,7 @@ headerInfo: {
     typeNamePlural: 'Travels',
     title: {
         type: #STANDARD,
-        value: 'TravelID' 
+        value: 'TravelID'
     }
 }
 }
@@ -25,10 +25,7 @@ annotate view ZC_TRAVEL_8712 with
                    position:      20,
                    targetElement: '_Booking'
                   }]
-                  
-  //@UI.hidden: true
-  //TravelUuid;
-
+                 
   @UI: {
   lineItem: [{ position: 10, importance: #HIGH }],
   identification: [{ position: 10, label: 'Travel ID [1,...,99999999]' }]}

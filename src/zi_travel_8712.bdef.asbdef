@@ -4,6 +4,7 @@ managed;
 define behavior for ZI_TRAVEL_8712 alias Travel
 implementation in class zbp_i_travel_8712 unique
 persistent table ztb_travel_8712a
+    with additional save
 
 lock master
 authorization master ( instance )
@@ -12,9 +13,7 @@ etag master LocalLastChangedAt
   //Administrative field: read only
   field ( numbering : managed, readonly ) TravelUuid;
   field ( readonly ) LastChangedAt, LocalLastChangedBy, LocalCreatedBy, LocalCreatedAt;
-
-  //Mandatory Field, that are required to create travel
-  field ( mandatory ) AgencyId, TravelStatus, BookingFee, CurrencyCode;
+  field ( mandatory : create ) TravelId, AgencyId, TravelStatus, BookingFee, CurrencyCode;
   field ( features : instance ) TravelId, TravelStatus;
   create;
   update;
@@ -22,15 +21,15 @@ etag master LocalLastChangedAt
 
   //Validaciones
   validation validateCustomer on save { create; field CustomerId; }
-  validation validateDates on save { field BeginDate, EndDate; }
-  validation validateStatus on save { field TravelStatus; }
+  validation validateDates on save { create; field BeginDate, EndDate; }
+  validation validateStatus on save { create; field TravelStatus; }
 
   //Actions
   action ( features : instance ) acceptTravel result [1] $self;
   action ( features : instance ) rejectTravel result [1] $self;
   action createTravelByTemplate result [1] $self;
 
-  association _Booking { create; }
+  association _Booking { create ( features : instance ); }
   mapping for ztb_travel_8712a
     {
       TravelUuid         = travel_uuid;
@@ -61,17 +60,22 @@ etag master LocalLastChangedAt
 //unmanaged saveed saveged save master <field_name>
 {
   //Administrative  field: read only
-  field ( readonly : update ) BookingUuid, CarrierId, ConnectionId, FlightDate,
-  BookingStatus, BookingId, ParentUuid;
+  field ( numbering : managed, readonly ) BookingUuid;
+  field ( readonly ) ParentUuid;
+  field ( mandatory : create ) BookingId, CarrierId, ConnectionId, FlightDate, BookingStatus;
   //field(mandatory)
   update;
   delete;
-  validation validateStatus on save { field BookingStatus; }
-  determination calculateTotalFlightPrice on modify { field FlightPrice; }
+  validation    validateStatus on save { create; field BookingStatus; }
+
+  determination calculateTotalFlightPrice on modify
+                { field FlightPrice, CurrencyCode;  }
+
   determination calculateTotalSupplimPrice on modify { field CurrencyCode; }
 
   association _Travel;
-  association _BookingSupplement { create; }
+  association _BookingSupplement { create ( features : instance ); }
+
   mapping for ztb_booking_8712
     {
       BookingUuid        = booking_uuid;
@@ -98,7 +102,8 @@ authorization dependent by _Travel
 etag master LocalLastChangedAt
 {
   //Administrative field: read only
-  field ( readonly : update ) BooksupplUuid, RootUuid, ParentUuid;
+  field ( numbering : managed, readonly ) BooksupplUuid;
+  field ( readonly ) RootUuid, ParentUuid;
   //field(mandatory)
   field ( mandatory ) SupplementId, Price;
   update;

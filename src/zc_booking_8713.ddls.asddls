@@ -2,7 +2,8 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @Metadata.allowExtensions: true
 @Search.searchable: true
-define view entity ZC_BOOKING_8713 as projection on ZI_BOOKING_8712
+define view entity ZC_BOOKING_8713 
+  as projection on ZI_BOOKING_8712
 {
   key BookingUuid,
   key ParentUuid,

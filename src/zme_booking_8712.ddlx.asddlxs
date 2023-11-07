@@ -1,17 +1,13 @@
 @Metadata.layer: #CORE
-
+@Search.searchable: true
 @UI: { headerInfo: { typeName: 'Booking',
                      typeNamePlural: 'Bookings',
-                     title: { type: #STANDARD, value: 'BookingID' } } }
+                     title: { type: #STANDARD, 
+                              label: 'Booking',
+                              value: '_Travel' } } }
+                    
 annotate view ZC_BOOKING_8713 with
 {
-  //  @UI.facet: [ { id:          'Booking',
-  //               purpose:       #STANDARD,
-  //               type:          #IDENTIFICATION_REFERENCE,
-  //               label:         'Booking',
-  //               position:      10 } ]
-  //  @Search.defaultSearchElement: true
-  //  BookingUuid;
   @UI.facet: [{ id: 'Booking', purpose: #STANDARD,
                 type: #IDENTIFICATION_REFERENCE ,
                 label: 'Booking',
