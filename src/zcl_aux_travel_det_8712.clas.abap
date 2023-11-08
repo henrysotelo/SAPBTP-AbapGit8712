@@ -17,7 +17,9 @@ CLASS zcl_aux_travel_det_8712 DEFINITION
     CLASS-METHODS:
       calculate_price
         IMPORTING
-          it_travel_uuid TYPE tt_travel_uuid.
+          it_travel_uuid     TYPE tt_travel_uuid
+        EXPORTING
+          it_travel_reported TYPE tt_travel_reported.
 
   PROTECTED SECTION.
   PRIVATE SECTION.
@@ -39,7 +41,8 @@ CLASS zcl_aux_travel_det_8712 IMPLEMENTATION.
 
     READ ENTITIES OF zi_travel_8712
      ENTITY Travel
-     FROM VALUE #( FOR travel_uuid IN it_travel_uuid
+     FIELDS ( TravelUuid TravelId CurrencyCode )
+     WITH VALUE #( FOR travel_uuid IN it_travel_uuid
                       ( TravelUuid = travel_uuid ) )
      RESULT DATA(lt_read_travel).
 
@@ -96,7 +99,8 @@ CLASS zcl_aux_travel_det_8712 IMPLEMENTATION.
     READ ENTITIES OF zi_travel_8712
     ENTITY Booking BY \_BookingSupplement
       FROM VALUE #( FOR ls_travel IN lt_read_booking
-                     ( ParentUuid             = ls_travel-ParentUuid
+                     ( BookingUuid            = ls_travel-BookingUuid
+                       ParentUuid             = ls_travel-ParentUuid
                        %control-Price         = if_abap_behv=>mk-on
                        %control-CurrencyCode  = if_abap_behv=>mk-on ) )
      RESULT DATA(lt_read_Supplement).

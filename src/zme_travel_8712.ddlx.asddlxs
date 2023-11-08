@@ -84,5 +84,9 @@ annotate view ZC_TRAVEL_8712 with
 
   @UI.hidden: true
   LastChangedAt;
+  
+  @UI: { lineItem: [ { position: 60, importance: #HIGH } ] }
+  @EndUserText.label: 'Discount 10%'
+  DiscounPrice;
 
 }
