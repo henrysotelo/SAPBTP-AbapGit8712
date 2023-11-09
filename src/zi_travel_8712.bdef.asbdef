@@ -104,8 +104,7 @@ etag master LocalLastChangedAt
   //Administrative field: read only
   field ( numbering : managed, readonly ) BooksupplUuid;
   field ( readonly ) RootUuid, ParentUuid;
-  //field(mandatory)
-  field ( mandatory ) SupplementId, Price;
+  field ( mandatory: create ) SupplementId, Price;
   update;
   delete;
   determination calculateTotalSupplimPrice on modify { field Price, CurrencyCode; }
@@ -114,8 +113,8 @@ etag master LocalLastChangedAt
   mapping for ztb_booksul_8712
     {
       BooksupplUuid       = booksuppl_uuid;
-      RootUuid            = root_uuid;
       ParentUuid          = parent_uuid;
+      RootUuid            = root_uuid;
       BookingSupplementId = booking_supplement_id;
       SupplementId        = supplement_id;
       Price               = price;

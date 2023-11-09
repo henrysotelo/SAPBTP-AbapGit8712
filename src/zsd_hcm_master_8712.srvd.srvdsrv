@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service definition HCM Master'
+define service ZSD_HCM_MASTER_8712 {
+  expose ZC_HCM_MASTER as HCMMaster;
+}
