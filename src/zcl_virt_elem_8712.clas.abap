@@ -11,7 +11,8 @@ ENDCLASS.
 
 
 
-CLASS zcl_virt_elem_8712 IMPLEMENTATION.
+CLASS ZCL_VIRT_ELEM_8712 IMPLEMENTATION.
+
 
   METHOD if_sadl_exit_calc_element_read~calculate.
 
@@ -33,6 +34,7 @@ CLASS zcl_virt_elem_8712 IMPLEMENTATION.
 
   ENDMETHOD.
 
+
   METHOD if_sadl_exit_calc_element_read~get_calculation_info.
 
     IF iv_entity = 'ZC_TRAVEL_8712'.
@@ -48,5 +50,4 @@ CLASS zcl_virt_elem_8712 IMPLEMENTATION.
     ENDIF.
 
   ENDMETHOD.
-
 ENDCLASS.

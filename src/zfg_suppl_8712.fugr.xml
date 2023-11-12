@@ -4,7 +4,6 @@
   <asx:values>
    <AREAT>Supplements Update</AREAT>
    <INCLUDES>
-    <SOBJ_NAME>LZFG_SUPPL_8712TOP</SOBJ_NAME>
     <SOBJ_NAME>SAPLZFG_SUPPL_8712</SOBJ_NAME>
    </INCLUDES>
    <FUNCTIONS>

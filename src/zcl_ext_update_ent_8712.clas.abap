@@ -12,7 +12,8 @@ ENDCLASS.
 
 
 
-CLASS zcl_ext_update_ent_8712 IMPLEMENTATION.
+CLASS ZCL_EXT_UPDATE_ENT_8712 IMPLEMENTATION.
+
 
   METHOD if_oo_adt_classrun~main.
 
@@ -43,5 +44,4 @@ CLASS zcl_ext_update_ent_8712 IMPLEMENTATION.
 
 
   ENDMETHOD.
-
 ENDCLASS.

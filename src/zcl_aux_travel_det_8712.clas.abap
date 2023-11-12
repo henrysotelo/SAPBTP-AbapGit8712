@@ -27,7 +27,8 @@ ENDCLASS.
 
 
 
-CLASS zcl_aux_travel_det_8712 IMPLEMENTATION.
+CLASS ZCL_AUX_TRAVEL_DET_8712 IMPLEMENTATION.
+
 
   METHOD calculate_price.
 
@@ -160,5 +161,4 @@ CLASS zcl_aux_travel_det_8712 IMPLEMENTATION.
 
 
   ENDMETHOD.
-
 ENDCLASS.
