@@ -13,12 +13,14 @@ define view entity ZC_ABOOKING_8713
       _Carrier.Name as CarrierName,
       ConnectionId,
       FlightDate,
+      @Semantics.amount.currencyCode : 'CurrencyCode'
       FlightPrice,
       CurrencyCode,
       BookingStatus,
       LocalLastChangedAt,
       /* Associations */
       _Travel : redirected to parent ZC_ATRAVEL_8712,
+      _BookingSupplement : redirected to composition child ZC_BOOKSUPPL_8712,
       _Customer,
       _Carrier
 }
